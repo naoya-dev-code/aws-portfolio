@@ -8,7 +8,7 @@ resource "aws_cloudfront_distribution" "portfolio" {
   origin {
     domain_name              = "portfolio-naoya-s3.s3.ap-northeast-1.amazonaws.com"
     origin_id                = "portfolio-naoya-s3.s3.ap-northeast-1.amazonaws.com-mu9zbj8m926"
-    origin_access_control_id = "E2BB7G85WYE2L2"
+    origin_access_control_id = aws_cloudfront_origin_access_control.portfolio.id
   }
 
   default_cache_behavior {
@@ -31,7 +31,7 @@ resource "aws_cloudfront_distribution" "portfolio" {
     cloudfront_default_certificate = true
   }
 
-  web_acl_id = "arn:aws:wafv2:us-east-1:699475953900:global/webacl/CreatedByCloudFront-15b3d460/61a17307-6e2f-4493-99e6-6aab88ea4b76"
+  web_acl_id = aws_wafv2_web_acl.portfolio.arn
 
   tags = {
     Name = "aws-portfolio"

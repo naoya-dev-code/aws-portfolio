@@ -1,9 +1,12 @@
 # AWS Portfolio
 
-AWSを利用して構築したインフラ環境・学習内容をまとめるポートフォリオです。
+AWSを利用して構築した、インフラエンジニア向けのポートフォリオサイトです。
 
-現在は、Amazon S3とAmazon CloudFrontを利用した静的Webサイトを構築し、
-GitHub Actionsを利用したCI/CD環境まで実装しています。
+静的WebサイトをAmazon S3に保存し、Amazon CloudFrontを経由してHTTPSで配信しています。
+
+GitHub ActionsとAWS IAM OIDCを利用したCI/CDを構築しており、`main`ブランチへのpushをトリガーに自動デプロイされます。
+
+また、AWSインフラストラクチャはTerraformによってInfrastructure as Code（IaC）として管理しています。
 
 ---
 
@@ -14,7 +17,7 @@ Developer
     |
     | git push
     v
-GitHub Repository
+GitHub
     |
     v
 GitHub Actions
@@ -26,8 +29,12 @@ AWS IAM Role
     v
 Amazon S3
     |
+    | Origin Access Control (OAC)
     v
 Amazon CloudFront
     |
     v
-Users
+AWS WAF
+    |
+    v
+User

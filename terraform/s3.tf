@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "portfolio" {
-  bucket = "portfolio-naoya-s3"
+  bucket = var.bucket_name
 }
 
 resource "aws_s3_bucket_public_access_block" "portfolio" {
