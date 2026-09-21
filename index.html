@@ -12,6 +12,10 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: Arial, sans-serif;
       background: #0f172a;
@@ -105,11 +109,74 @@
       border-radius: 20px;
     }
 
+    /* Architecture */
+    .architecture {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .architecture-item {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 18px 22px;
+      min-width: 130px;
+      text-align: center;
+    }
+
+    .architecture-item strong {
+      display: block;
+      color: #ffffff;
+      margin-bottom: 5px;
+    }
+
+    .architecture-item span {
+      font-size: 14px;
+      color: #94a3b8;
+    }
+
+    .arrow {
+      color: #38bdf8;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .architecture-note {
+      margin-top: 30px;
+      padding: 20px;
+      background: #1e293b;
+      border-left: 4px solid #38bdf8;
+      border-radius: 8px;
+      color: #cbd5e1;
+    }
+
     footer {
       text-align: center;
       padding: 30px;
       color: #64748b;
       border-top: 1px solid #1e293b;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .architecture {
+        flex-direction: column;
+      }
+
+      .architecture-item {
+        width: 100%;
+      }
+
+      .arrow {
+        transform: rotate(90deg);
+      }
     }
   </style>
 </head>
@@ -153,6 +220,68 @@
     <span>CloudWatch</span>
     <span>Linux</span>
     <span>Git / GitHub</span>
+    <span>GitHub Actions</span>
+    <span>OIDC</span>
+  </div>
+</section>
+
+<section id="architecture">
+  <h2>Architecture</h2>
+
+  <p>
+    GitHubへのpushをトリガーとして、GitHub ActionsからAWSへ
+    自動デプロイするCI/CD環境を構築しています。
+  </p>
+
+  <div class="architecture">
+
+    <div class="architecture-item">
+      <strong>Developer</strong>
+      <span>Git Push</span>
+    </div>
+
+    <div class="arrow">→</div>
+
+    <div class="architecture-item">
+      <strong>GitHub</strong>
+      <span>Repository</span>
+    </div>
+
+    <div class="arrow">→</div>
+
+    <div class="architecture-item">
+      <strong>GitHub Actions</strong>
+      <span>CI/CD</span>
+    </div>
+
+    <div class="arrow">→</div>
+
+    <div class="architecture-item">
+      <strong>AWS IAM</strong>
+      <span>OIDC</span>
+    </div>
+
+    <div class="arrow">→</div>
+
+    <div class="architecture-item">
+      <strong>Amazon S3</strong>
+      <span>Static Website</span>
+    </div>
+
+    <div class="arrow">→</div>
+
+    <div class="architecture-item">
+      <strong>CloudFront</strong>
+      <span>CDN / HTTPS</span>
+    </div>
+
+  </div>
+
+  <div class="architecture-note">
+    AWSアクセスキーをGitHubに保存せず、OIDCを利用してIAMロールを
+    一時的に引き受ける構成にしています。
+    デプロイ後はCloudFrontのInvalidationを自動実行し、
+    最新コンテンツを配信します。
   </div>
 </section>
 
@@ -166,7 +295,8 @@
 
       <p>
         Amazon S3とAmazon CloudFrontを利用して構築した
-        静的Webサイトです。
+        静的Webサイトです。GitHub ActionsとOIDCを利用して、
+        AWSへの自動デプロイ環境も構築しています。
       </p>
     </div>
 
