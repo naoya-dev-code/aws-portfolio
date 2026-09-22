@@ -66,6 +66,14 @@
       font-weight: bold;
     }
 
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    .project-link {
+      margin-top: 20px;
+    }
+
     section {
       max-width: 1000px;
       margin: auto;
@@ -191,7 +199,8 @@
 
     <p>
       AWSを中心にクラウドインフラを学習・構築しています。
-      実際にAWS環境を構築しながら、設計・セキュリティ・可用性について学んでいます。
+      TerraformによるInfrastructure as Codeや、
+      GitHub Actionsを利用したCI/CDにも取り組んでいます。
     </p>
 
     <a href="#projects" class="btn">View Projects</a>
@@ -203,7 +212,9 @@
 
   <p>
     インフラエンジニアとしてAWSを中心にクラウド技術を学習しています。
-    AWS環境を実際に構築し、設計から運用まで理解することを目標としています。
+    AWS環境を実際に構築し、Terraformによるインフラ管理や
+    GitHub Actionsを利用したCI/CDなど、設計から運用までを
+    実践しながら学んでいます。
   </p>
 </section>
 
@@ -212,6 +223,7 @@
 
   <div class="skills">
     <span>AWS</span>
+    <span>Terraform</span>
     <span>VPC</span>
     <span>EC2</span>
     <span>S3</span>
@@ -298,23 +310,55 @@
         静的Webサイトです。GitHub ActionsとOIDCを利用して、
         AWSへの自動デプロイ環境も構築しています。
       </p>
+
+      <a
+        href="https://github.com/naoya-dev-code/aws-portfolio"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn project-link"
+      >
+        View GitHub
+      </a>
     </div>
 
     <div class="card">
-      <h3>VPC Architecture</h3>
+      <h3>Terraform VPC Architecture</h3>
 
       <p>
-        Public / Private Subnet、NAT Gateway、
-        Security Groupなどを利用したVPC構成。
+        Terraformを利用してVPC、Public / Private Subnet、
+        Internet Gateway、Route Table、Security Group、
+        Application Load Balancer、EC2を構築しました。
+        コストを考慮し、NAT Gatewayを使用しない構成を採用しています。
       </p>
+
+      <a
+        href="https://github.com/naoya-dev-code/aws-vpc-terraform"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn project-link"
+      >
+        View GitHub
+      </a>
     </div>
 
     <div class="card">
-      <h3>Coming Soon</h3>
+      <h3>Terraform CI/CD Pipeline</h3>
 
       <p>
-        AWSを利用した新しいインフラ構成を追加予定です。
+        TerraformとGitHub Actionsを利用したAWSインフラの
+        CI/CD環境を構築しました。OIDCによるAWS認証、
+        S3 Remote State、State Lock、Terraform Planの自動化、
+        手動Applyを実装しています。
       </p>
+
+      <a
+        href="https://github.com/naoya-dev-code/terraform-github-actions"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn project-link"
+      >
+        View GitHub
+      </a>
     </div>
 
   </div>
